@@ -74,5 +74,21 @@ namespace ShopeeMe.UnitTests.Repository
                 return false;
             }
         }
+
+        public bool getShopByParentCategoryID(int parentCategoryID)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "sp_GetShopByParentCategoryID";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@FK_iParentCategoryID", parentCategoryID);
+            DataTable table = Functions.getData(cmd);
+            if ( table.Rows.Count > 0 )
+            {
+                return true;
+            } else
+            {
+                return false;
+            }
+        }
     }
 }
