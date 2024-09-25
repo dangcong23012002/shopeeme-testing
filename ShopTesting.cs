@@ -41,5 +41,31 @@ namespace ShopeeMe.UnitTests
             // Assert
             Assert.IsTrue(result);
         }
+
+        [Test]
+        public void getShopByUsername_Successfully()
+        {
+            // Asign
+            string username = "laneige.vn";
+
+            // Act
+            bool result = _repository.getShopByUsername(username);
+
+            // Assert
+            Assert.IsTrue(result);
+        }
+
+        [Test]
+        public void getShopByProductID_Successfully()
+        {
+            // Asign
+            int productID = 2;
+
+            // Act
+            bool result = _repository.getShopByProductID(productID);
+
+            // Assert
+            Assert.IsTrue(result);
+        }
     }
 }

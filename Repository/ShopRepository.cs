@@ -41,5 +41,38 @@ namespace ShopeeMe.UnitTests.Repository
                 return true;
             }
         }
+
+        public bool getShopByUsername(string username)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "sp_GetShopByUsername";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@sShopUsername", username);
+            DataTable table = Functions.getData(cmd);
+            if (table.Rows.Count > 0 )
+            {
+                return true;
+            } else
+            {
+                return false;
+            }
+        }
+
+        public bool getShopByProductID(int productID)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "sp_GetShopByProductID";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@PK_iProductID", productID);
+            DataTable table = Functions.getData(cmd);
+            if(table.Rows.Count > 0 )
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
