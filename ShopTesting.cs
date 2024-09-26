@@ -80,5 +80,18 @@ namespace ShopeeMe.UnitTests
             // Assert
             Assert.IsTrue(result);
         }
+
+        [Test]
+        public void getBannersShopByShopID_Successfully()
+        {
+            // Asign
+            int shopID = 1;
+
+            // Act
+            bool result = _repository.getBannersShopByShopID(shopID);
+
+            // Assert
+            Assert.IsTrue(result);
+        }
     }
 }

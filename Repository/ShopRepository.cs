@@ -90,5 +90,21 @@ namespace ShopeeMe.UnitTests.Repository
                 return false;
             }
         }
+
+        public bool getBannersShopByShopID(int shopID)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "sp_GetBannersShopByShopID";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@FK_iShopID", shopID);
+            DataTable table = Functions.getData(cmd);
+            if (table.Rows.Count > 0 )
+            {
+                return true;
+            } else
+            {
+                return false;
+            }
+        }
     }
 }
