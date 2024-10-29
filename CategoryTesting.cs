@@ -53,5 +53,18 @@ namespace ShopeeMe.UnitTests
             // Assert
             Assert.IsTrue(result);
         }
+
+        [Test]
+        public void getCategoriesByShopID_Sucessfully()
+        {
+            // Asign
+            int shopID = 1;
+
+            // Act
+            bool result = _categoryRepository.getCategoriesByShopID(shopID);
+
+            // Assert
+            Assert.IsTrue(result);
+        }
     }
 }

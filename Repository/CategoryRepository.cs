@@ -56,5 +56,36 @@ namespace ShopeeMe.UnitTests.Repository
                 return false;
             }
         }
+
+        public bool getCategoriesByShopID(int shopID) 
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "sp_GetAllCategoriesByShopID";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@FK_iShopID", shopID);
+            DataTable table = Functions.getData(cmd);
+            if (table.Rows.Count > 0)
+            {
+                return true;
+            } else
+            {
+                return false;
+            }
+        }
+
+        public bool insertCategory(int storeID = 0, int parentCategoryID = 0, string categoryName = "", string categoryImage = "", string categoryDesc = "")
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "sp_InsertCategory";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@FK_iStoreID", storeID);
+            cmd.Parameters.AddWithValue("@FK_iParentCategoryID", parentCategoryID);
+            cmd.Parameters.AddWithValue("@sCategoryName", categoryName);
+            cmd.Parameters.AddWithValue("@sCategoryImage", categoryImage);
+            cmd.Parameters.AddWithValue("@sCategoryDescription", categoryDesc);
+            cmd.Parameters.AddWithValue("@iIsVisible", 1);
+            Functions.excuteNonQuery(cmd);
+            return true;
+        }
     }
 }
